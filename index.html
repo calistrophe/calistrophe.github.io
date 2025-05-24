@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday</title>
+
+  <style>
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      opacity: 5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(138, 43, 226, 0.2), transparent),
+        radial-gradient(circle at 70% 60%, rgba(255, 20, 147, 0.15), transparent),
+        radial-gradient(circle at 50% 80%, rgba(0, 191, 255, 0.1), transparent);
+
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes nebulaFlow {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    body {
+      background: radial-gradient(ellipse at top left, #040109, #130123 40%, #000000 100%);
+      color: #f5f5f5;
+      font-family: 'Montserrat', 'Poppins', 'Arial', 'Nunito', sans-serif;
+      text-align: center;
+      padding: 50px;
+      position: relative;
+      overflow-x: hidden;
+      z-index: 1;
+    }
+     h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 80px;
+      color: #E6E6FA;
+      text-shadow: 0 0 15px #C0A6F7;
+    }
+    p {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 400;
+      color: #D8B4E2;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .cake {
+      margin: 2rem auto;
+      position: relative;
+      width: 200px;
+      animation: glow 3s infinite alternate;
+    }
+    .cake .base {
+      width: 200px;
+      height: 100px;
+      background: linear-gradient(to bottom, #B497BD);
+      border-radius: 15px 15px 10px 10px;
+      position: relative;
+      box-shadow: 0 0 20px #8A2BE2aa;
+    }
+    .cake .frosting {
+      width: 200px;
+      height: 20px;
+      background: radial-gradient(circle at top, #fff 60%, #ffd6d6 100%);
+      border-radius: 10px 10px 0 0;
+      position: absolute;
+      top: -20px;
+      left: 0;
+    }
+    .cake .sprinkles::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 180px;
+      height: 80px;
+      background-image: radial-gradient(circle, #fff 2px, transparent 2px),
+        radial-gradient(circle, #00f 2px, transparent 2px),
+        radial-gradient(circle, #0f0 2px, transparent 2px),
+        radial-gradient(circle, #ff0 2px, transparent 2px),
+        radial-gradient(circle, #f0f 2px, transparent 2px);
+      background-size: 20px 20px;
+      background-repeat: repeat;
+      border-radius: 15px;
+    }
+    .cake .candle {
+      width: 12px;
+      height: 40px;
+      background: repeating-linear-gradient(45deg,
+          #fff,
+          #fff 4px,
+          #ff6f61 4px,
+          #ff6f61 8px);
+      margin: auto;
+      margin-top: -60px;
+      position: relative;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+    .cake .flame {
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle, #FFD580 30%, #C71585 80%);
+      box-shadow: 0 0 12px #FFD580aa;
+      border-radius: 50%;
+      position: absolute;
+      top: -24px;
+      left: -2px;
+      animation: flicker 0.8s infinite;
+    }
+    @keyframes flicker {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+      0% {
+        filter: drop-shadow(0 0 10px #ff6f61);
+      }
+
+      100% {
+        filter: drop-shadow(0 0 25px #ff6f61);
+      }
+    }
+
+    .caption {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #aaa;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #FF1493;
+      color: #fff;
+      box-shadow: 0 0 10px #8A2BE2aa;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.25);
+    }
+
+    #egoBoost {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffd166;
+    }
+
+    .boost-display {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 18px;
+      border: 2px solid #90ee90;
+      border-radius: 25px;
+      background: rgba(144, 238, 144, 0.1);
+      font-size: 1rem;
+      color: #90ee90;
+      font-weight: bold;
+      box-shadow: 0 0 10px #90ee9080;
+      cursor: default;
+      transition: transform 0.3s ease;
+    }
+
+    /*code for that stupid ass shaking envelope */
+    #envelope-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 48px;
+      color: #ffd166;
+      cursor: pointer;
+      user-select: none;
+      text-shadow: 0 0 10px #ffd166;
+      animation: shake 0.2s infinite;
+      z-index: 1000;
+      border: none;
+      background: transparent;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    #modal-content {
+      background: #1c0f3c;
+      border-radius: 15px;
+      max-width: 400px;
+      padding: 30px 25px;
+      box-shadow: 0 0 25px #ffd166;
+      color: #fffacd;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    #close-btn {
+      margin-top: 25px;
+      background: #ffd166;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #4b0082;
+      box-shadow: 0 0 15px #ffd166aa;
+      transition: background 0.3s ease;
+    }
+
+    #close-btn:hover {
+      background: #ffea85;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      25% {
+        transform: translate(1px, -1px) rotate(-3deg);
+      }
+
+      50% {
+        transform: translate(-1px, 1px) rotate(3deg);
+      }
+
+      75% {
+        transform: translate(1px, 1px) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(-2deg);
+      }
+    }
+
+    /* Confetti fall animation */
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="boostLevel" class="boost-display">Boost Level: 0%</div>
+
+  <h1>HAPPY BIRTHDAY JITESH</h1>
+
+  <div class="cake">
+    <div class="candle">
+      <div class="flame"></div>
+    </div>
+    <div class="base">
+      <div class="frosting"></div>
+      <div class="sprinkles"></div>
+    </div>
+  </div>
+
+  <p>
+    I was gonna get you a cake <br />
+    but here’s a lame aah page instead.<br />
+    because average wishes are for average people <br />
+    & <strong>you’re built different since birth.</strong><br />
+    once again, happy birthday, CEO.
+  </p>
+
+  <button onclick="boostEgo()">Press for Birthday Ego Boost</button>
+  <div id="egoBoost"></div>
+
+  <!-- opening the stupid envelope -->
+  <button id="envelope-btn" title="click kr na nigger, hover kyu krray">📩</button>
+
+  <!-- Modal, this is too much bro istg -->
+  <div id="modal">
+    <div id="modal-content">
+      <p>Sometimes things don't go as u planned them to, and that's completely fine. I know U can do it, U know U can do
+        it and U will do IT. Don't u worry, things will align. Life is a journey; ups and downs happen, but the only
+        constant that'll stay in your life is U urself. Happy birthday nego, enjoy your day!.</p>
+      <button id="close-btn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Ego Boost lines hehehehehehehe (why tf m i even writing this shyt)
+    const egoLines = [
+      "Bro even gravity falls for you (zyaada hogya)",
+      "Moroforororo",
+      "Aur kya hi likhu, hbd bro",
+      "Madam ji loves u back",
+      "Aur ek baar click kr",
+      "Awesome-Ass Neegrella",
+      "zyaada chadh matt, bday hai isiliye thik hai",
+      "Fucking Legendary Brat whos good at almost everything",
+      "Thanku bolna hai toh bol skta hai",
+      "Jitesh Nigger, oops ceo I meant",
+      "Khudko Batman samjhna kabhi band matt krna",
+      "Even the stars in the sky are jealous of your shine (haan google se nikali yeh line)",
+      "The only thing bigger than your brain is your rizz.",
+      "vo sab toh thik hai, but brainrot ko sudhaar apne",
+      "baby gorl u should try to sleep once in a while",
+      "CLICK THE ENVELOPE HAVING AN EPILEPSY ATTACK ON THE BOTTOM RIGHT, ITS DYING TO BE TOUCHED",
+      "Dora The Explorer ki bhatakti aatma",
+      "Drive within speed limits bbg, I dont want u to die, and neither would madam ji like that",
+      "Do u ever do normal human stuff? ki harvakt extreme hi krna hota hai kuch?",
+      "where's my return gift? I wont mind a Porsche ya GPD win 4 or u can just send me money I'll manage",
+      "I never knew Batman ka transfer Gotham se Pune hogya"
+    ];
+
+    let boostLevel = 0;
+    const maxBoost = 100;
+    let remainingPrompts = [...egoLines]; // Copy for cycling
+
+    function boostEgo() {
+      if (boostLevel >= maxBoost) {
+        document.getElementById('egoBoost').innerText = "Ego might have exceeded legal limits. Please stop.";
+        return;
+      }
+
+      if (remainingPrompts.length === 0) {
+        remainingPrompts = [...egoLines];
+      }
+
+      const randomIndex = Math.floor(Math.random() * remainingPrompts.length);
+      const line = remainingPrompts.splice(randomIndex, 1)[0];
+
+      document.getElementById('egoBoost').innerText = line;
+
+      boostLevel += Math.floor(Math.random() * 2) + 2; // +2 to +3% boost ev time so that none of the lines i wrote go missing haash
+      if (boostLevel > maxBoost) boostLevel = maxBoost;
+
+      document.getElementById('boostLevel').innerText = `Boost Level: ${boostLevel}%`;
+
+      // Confetti effect drop (i fucking hope this shyt works)
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.borderRadius = '50%';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;
+        confetti.style.top = `${Math.random() * -window.innerHeight}px`;
+        confetti.style.opacity = '1';
+        confetti.style.zIndex = '999';
+        confetti.style.pointerEvents = 'none';
+        confetti.style.animation = `fall ${2 + Math.random() * 2}s linear forwards`;
+        confetti.style.animationDelay = `${Math.random() * 1}s`;
+        document.body.appendChild(confetti);
+
+        // Remove confetti after animation (unnecessary i should remove this)
+        confetti.addEventListener('animationend', () => confetti.remove());
+      }
+    }
+
+    // that shakey envelope code
+    const envelopeBtn = document.getElementById('envelope-btn');
+    const modal = document.getElementById('modal');
+    const closeBtn = document.getElementById('close-btn');
+
+    envelopeBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // close that fucking envelope
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+    // its done finallyyyyyy, biro why tf r u reading this code, i just told u to copy paste and run the damn thing... I mean could make a better interface, but its okay, time kam tha lol... yeah thats it...
+
+    
+  </script>
+</body>
+
+</html>
